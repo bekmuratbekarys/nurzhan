@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#155548">
+
+  <title>Мамырұлы Нұржан — Қырық күндік асқа шақыру</title>
+
+<style>
+  :root {
+    --green: #155548;
+    --dark: #163f35;
+    --gold: #bd984e;
+    --paper: #faf9f3;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  [hidden] {
+    display: none !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 30px 15px;
+    background: #e8ede7;
+    color: var(--dark);
+    font-family: Georgia, "Times New Roman", serif;
+  }
+
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  a:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 4px;
+  }
+
+  .invitation {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: var(--paper);
+    box-shadow: 0 20px 70px rgba(22, 63, 53, 0.12);
+  }
+
+  .invitation::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 1px solid rgba(189, 152, 78, 0.45);
+    pointer-events: none;
+  }
+
+  .corner {
+    position: absolute;
+    top: 0;
+    width: 155px;
+    height: 165px;
+    background-color: var(--green);
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        transparent 0 22px,
+        rgba(255, 255, 255, 0.12) 22px 24px,
+        transparent 24px 46px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0 22px,
+        rgba(255, 255, 255, 0.12) 22px 24px,
+        transparent 24px 46px
+      );
+    border-bottom: 6px solid var(--gold);
+    border-radius: 0 0 100% 0;
+  }
+
+  .corner-right {
+    right: 0;
+    transform: scaleX(-1);
+  }
+
+  header {
+    position: relative;
+    padding: 48px 25px 0;
+    text-align: center;
+  }
+
+  .mosque {
+    width: 95px;
+    height: 70px;
+    color: var(--green);
+  }
+
+  h1 {
+    margin: 25px 0 0;
+    font-size: clamp(29px, 5.5vw, 47px);
+    font-weight: normal;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    width: 70%;
+    max-width: 370px;
+    margin: 28px auto;
+    color: var(--gold);
+  }
+
+  .divider::before,
+  .divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--gold)
+    );
+  }
+
+  .divider::after {
+    transform: rotate(180deg);
+  }
+
+  .divider span {
+    font-size: 24px;
+  }
+
+  .portrait {
+    width: 220px;
+    height: 280px;
+    margin: 0 auto;
+    padding: 7px;
+    border: 2px solid var(--gold);
+    border-radius: 50%;
+  }
+
+  .portrait-inner {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--green);
+    border-radius: 50%;
+    background: linear-gradient(145deg, #eef1e8, #dfe7dc);
+  }
+
+  .portrait img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .photo-placeholder {
+    color: #7a8d7c;
+    font-size: 20px;
+  }
+
+  .person-name {
+    margin: 25px 25px 0;
+    text-align: center;
+    font-size: clamp(29px, 5vw, 41px);
+    font-weight: normal;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+
+  .message {
+    max-width: 610px;
+    margin: 0 auto;
+    padding: 0 30px;
+    text-align: center;
+  }
+
+  .message h2 {
+    margin: 0 0 22px;
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: normal;
+    line-height: 1.5;
+  }
+
+  .message p {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.65;
+    color: #4c6255;
+  }
+
+  .message strong {
+    color: var(--dark);
+  }
+
+  .venue {
+    margin: 30px 30px 0;
+    text-align: center;
+  }
+
+  .label {
+    margin-bottom: 13px;
+    color: #7d805f;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .venue-name {
+    margin: 0;
+    font-size: 27px;
+    line-height: 1.5;
+  }
+
+  .map-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin-top: 22px;
+    padding: 13px 22px;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    background: var(--green);
+    color: #fff8e7;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .map-button:hover {
+    background: #103f36;
+  }
+
+  .map-button svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+  }
+
+  .details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 32px 50px 36px;
+    padding: 27px 0;
+    border-top: 1px solid rgba(189, 152, 78, 0.5);
+    border-bottom: 1px solid rgba(189, 152, 78, 0.5);
+    text-align: center;
+  }
+
+  .detail {
+    min-width: 0;
+    padding: 0 10px;
+  }
+
+  .detail:first-child {
+    border-right: 1px solid rgba(189, 152, 78, 0.4);
+  }
+
+  .value {
+    font-size: 28px;
+    line-height: 1.5;
+  }
+
+  .blessing {
+    padding: 27px 30px 32px;
+    background: var(--green);
+    color: #f4ecd9;
+    text-align: center;
+  }
+
+  .blessing span {
+    display: block;
+    margin-bottom: 12px;
+    color: #d4b475;
+    font-size: 28px;
+  }
+
+  .blessing p {
+    margin: 0;
+    font-size: 21px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 550px) {
+    body {
+      padding: 0;
+    }
+
+    .invitation::after {
+      inset: 9px;
+    }
+
+    .corner {
+      width: 90px;
+      height: 105px;
+    }
+
+    header {
+      padding-top: 32px;
+    }
+
+    .mosque {
+      width: 75px;
+      height: 55px;
+    }
+
+    h1 {
+      font-size: clamp(26px, 7.7vw, 32px);
+    }
+
+    .portrait {
+      width: 190px;
+      height: 245px;
+    }
+
+    .message {
+      padding: 0 25px;
+    }
+
+    .message p {
+      font-size: 19px;
+    }
+
+    .details {
+      margin-right: 25px;
+      margin-left: 25px;
+    }
+
+    .value {
+      font-size: clamp(20px, 5.7vw, 26px);
+    }
+
+    .label {
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .venue-name {
+      font-size: 24px;
+    }
+
+    .blessing p {
+      font-size: 18px;
+    }
+  }
+
+  @media print {
+    body {
+      padding: 0;
+      background: white;
+    }
+
+    .invitation {
+      box-shadow: none;
+    }
+
+    .corner,
+    .blessing {
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+
+<body>
+  <main class="invitation">
+    <div class="corner" aria-hidden="true"></div>
+    <div class="corner corner-right" aria-hidden="true"></div>
+
+    <header>
+      <svg class="mosque" viewBox="0 0 120 80" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="
+            M10 72h100v5H10z
+            M18 28h8v44h-8z
+            M16 25l6-9 6 9z
+            M94 28h8v44h-8z
+            M92 25l6-9 6 9z
+            M34 50
+            C34 34 54 30 60 18
+            C66 30 86 34 86 50
+            V72H68V58
+            C68 47 52 47 52 58
+            V72H34z
+          "
+        />
+        <path
+          fill="currentColor"
+          d="M65 2a8 8 0 1 0 7 11A7 7 0 0 1 65 2"
+        />
+      </svg>
+
+      <h1>
+        Қырық күндік<br>
+        асқа шақыру
+      </h1>
+    </header>
+
+    <div class="divider" aria-hidden="true">
+      <span>❖</span>
+    </div>
+
+    <!-- Фотография -->
+    <div class="portrait">
+      <div class="portrait-inner">
+        <span class="photo-placeholder" id="photoPlaceholder">
+          Фото орны
+        </span>
+
+        <img
+          id="portraitPhoto"
+          src="Нуржан.jpeg"
+          alt="Мамырұлы Нұржан"
+          hidden
+        >
+      </div>
+    </div>
+
+    <h2 class="person-name">Мамырұлы Нұржан</h2>
+
+    <div class="divider" aria-hidden="true">
+      <span>❖</span>
+    </div>
+
+    <section class="message">
+      <h2>
+        Құрметті ағайын-туыс,<br>
+        құда-жекжат, дос-жаран,<br>
+        көршілер!
+      </h2>
+
+      <p>
+        Сіздерді ардақты әке, сүйікті жар,
+        асыл бауыр болған марқұм
+        <strong>Нұржанның</strong>
+        рухына бағышталып берілетін
+        қырық күндік асқа шақырамыз.
+      </p>
+    </section>
+
+    <div class="divider" aria-hidden="true">
+      <span>❖</span>
+    </div>
+
+    <section class="venue">
+      <div class="label">Өтетін орны</div>
+
+      <p class="venue-name">
+        Алматы облысы,<br>
+        Қошманбет ауылдық мешіті
+      </p>
+
+      <a
+        class="map-button"
+        href="https://2gis.kz/almaty/firm/70000001061443259/76.66213%2C43.333973?m=76.660366%2C43.334389%2F17.6"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.7"
+          aria-hidden="true"
+        >
+          <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/>
+          <circle cx="12" cy="10" r="2.5"/>
+        </svg>
+
+        2GIS арқылы ашу
+      </a>
+    </section>
+
+    <section class="details" aria-label="Күні мен уақыты">
+      <div class="detail">
+        <div class="label">Күні</div>
+
+        <div class="value">
+          <time datetime="2026-12-05">05.12.2026</time>
+        </div>
+      </div>
+
+      <div class="detail">
+        <div class="label">Уақыты</div>
+
+        <div class="value">
+          <time datetime="11:00">11:00</time>
+        </div>
+      </div>
+    </section>
+
+    <footer class="blessing">
+      <span aria-hidden="true">✧</span>
+
+      <p>
+        Жатқан жері жайлы,<br>
+        топырағы торқа болсын.
+      </p>
+    </footer>
+  </main>
+
+  <!-- Музыка повторяется благодаря loop -->
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="konil_tolqyny.mp3" type="audio/mpeg">
+  </audio>
+<!-- Это комментарий в HTML -->
+  <button
+    class="music-button"
+    id="musicButton"
+    type="button"
+    aria-label="Музыканы қосу"
+    aria-pressed="false"
+  >
+    ♫ Музыканы қосу
+  </button>
+
+  <p class="music-status" id="musicStatus" role="status"></p>
+-->
+<script>
+  // Фотография
+  const photo = document.getElementById("portraitPhoto");
+  const placeholder = document.getElementById("photoPlaceholder");
+
+  function updatePhoto() {
+    const loaded = photo.complete && photo.naturalWidth > 0;
+
+    photo.hidden = !loaded;
+    placeholder.hidden = loaded;
+  }
+
+  photo.addEventListener("load", updatePhoto);
+  photo.addEventListener("error", updatePhoto);
+  updatePhoto();
+
+  // Музыка без кнопки
+  const music = document.getElementById("backgroundMusic");
+
+  music.volume = 0.25;
+  music.loop = true;
+
+  let pageActive = !document.hidden;
+
+  function stopMusic() {
+    pageActive = false;
+    music.pause();
+  }
+
+  async function startMusic() {
+    if (!pageActive || document.hidden || !music.paused) return;
+
+    try {
+      await music.play();
+
+      // Если пользователь успел выйти во время загрузки.
+      if (!pageActive || document.hidden) {
+        music.pause();
+      }
+    } catch {
+      // Браузер может запретить автозапуск.
+      // Тогда ждём нажатия пользователя, без сообщений и значков.
+    }
+  }
+
+  // Пробуем включить сразу.
+  startMusic();
+
+  // Если автозапуск запрещён — пробуем при нажатии.
+  document.addEventListener("click", startMusic);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      startMusic();
+    }
+  });
+
+  // Останавливаем при переключении вкладки или приложения.
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopMusic();
+    } else {
+      pageActive = true;
+      startMusic();
+    }
+  });
+
+  // Останавливаем при уходе со страницы.
+  window.addEventListener("pagehide", stopMusic);
+
+  // Возвращение на страницу через кнопку «Назад».
+  window.addEventListener("pageshow", () => {
+    pageActive = !document.hidden;
+    startMusic();
+  });
+</script>
+</body>
+</html>
